@@ -7,6 +7,7 @@ pipeline {
         stage('Git'){
 
             steps{
+            
                 echo "Getting Project From git"
                 git 'https://github.com/rafikzoubli/Achat_Test.git'
             }
@@ -20,7 +21,6 @@ pipeline {
 
                }
         }
-
 
 
        stage('Sonar') {
