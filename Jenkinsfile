@@ -65,7 +65,7 @@ pipeline {
     				sh 'docker build -t rafikzoubli/achat_docker:latest .'
     			}
     		}
-//dckr_pat_JaN7ObZj5zyKwVTiNfJ-fwAzv3s
+
 
     		stage('Login') {
 
