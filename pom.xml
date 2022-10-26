@@ -79,8 +79,7 @@
             <name>Nexus Repository</name>
             <url>http://localhost:8081/repository/maven releases/</url>
         </snapshotRepository>
-    </distributionManagement>v
-
+    </distributionManagement>
 
 
     <build>
