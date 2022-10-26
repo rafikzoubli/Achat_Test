@@ -55,15 +55,37 @@ pipeline {
 
     }
 
-    stage ('Docker') {
+    stage('Build') {
 
-        steps {
+    			steps {
+    				sh 'docker build -t rafikzoubli/achat_docker:latest .'
+    			}
+    		}
 
-        sh 'docker build -t getting-started-achat .'
+    		stage('Login') {
 
-        }
+    			steps {
+    				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    			}
+    		}
 
-            }
+    		stage('Push') {
+
+    			steps {
+    				sh 'docker push rafikzoubli/achat_docker:latest'
+    			}
+    		}
+    	}
+
+    	post {
+    		always {
+    			sh 'docker logout'
+    		}
+    	}
+
+    }
+
+
 
 
 }
