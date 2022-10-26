@@ -4,39 +4,35 @@ pipeline {
 
     stages{
 
-        stage('Git Checkout'){
+        stage('Git'){
 
             steps{
+                echo "Getting Project From git"
                 git 'https://github.com/rafikzoubli/Achat_Test.git'
             }
         }
-        stage('UNIT Testing'){
+
+        stage('Compiling'){
 
             steps{
                 sh 'mvn test'
             }
+            steps{
+                 sh 'mvn clean install'
+                        }
         }
-        stage('Integration testing'){
 
-            steps{
-                sh 'mvn verify -DskipUnitTests'
-            }
-        }
-        stage('Maven Build'){
 
-            steps{
-                sh 'mvn clean install'
+        stage('SonarQube'){
+
+                steps{
+
+        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+
             }
         }
-        stage('SonarQube analysis'){
-            steps{
-                script{
-                     withSonarQubeEnv(credentialsId: 'sonar-api') {
-                      sh 'mvn clean package sonar:sonar'
-                 }
-                }
-            }
-        }
+
+
         stage('Quality Gate status'){
 
             steps{
