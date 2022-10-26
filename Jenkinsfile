@@ -59,7 +59,7 @@ pipeline {
 
         steps {
 
-        sh 'Docker build'
+        sh 'docker build -t getting-started-achat .'
 
         }
 
