@@ -74,16 +74,17 @@
 
 
     <distributionManagement>
-        <snapshotRepository>
+        <repository>
             <id>deploymentRepo</id>
             <name>Nexus Repository</name>
             <url>http://localhost:8081/repository/maven releases/</url>
-        </snapshotRepository>
+        </repository>
     </distributionManagement>
 
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -101,6 +102,30 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+
 
         </plugins>
     </build>

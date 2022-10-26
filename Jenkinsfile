@@ -47,7 +47,7 @@ pipeline {
 
     steps {
 
-    sh 'mvn deploy -DskipTests'
+    sh 'mvn deploy'
 
     }
 
