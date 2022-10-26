@@ -15,7 +15,7 @@ pipeline {
         stage('Compiling'){
 
             steps{
-                 sh 'mvn clean install'
+                 sh 'mvn -U clean install'
                }
         }
 
