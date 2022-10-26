@@ -75,15 +75,13 @@ pipeline {
     				sh 'docker push rafikzoubli/achat_docker:latest'
     			}
     		}
-    	}
+
 
     	post {
     		always {
     			sh 'docker logout'
     		}
     	}
-
-    }
 
 
 
