@@ -16,11 +16,10 @@ pipeline {
 
             steps{
                 sh 'mvn test'
-            }
-            steps{
                  sh 'mvn clean install'
-                        }
+               }
         }
+
 
 
         stage('SonarQube'){
