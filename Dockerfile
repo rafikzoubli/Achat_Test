@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.8.2-jdk-8
+RUN yum install curl
+RUN curl -u Rafik:admin -o achat.jar "http://localhost/repository/maven-releases/tn/esprit/rh/achat/1.0/Achat-1.0.jar" -L
 EXPOSE 8089
-ADD target/achat.jar xyz.jar
-ENTRYPOINT ["java", "-jar","/xyz.jar"]
+ENTRYPOINT ["java", "-jar","/achat.jar"]
