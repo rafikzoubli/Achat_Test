@@ -55,6 +55,16 @@ pipeline {
 
     }
 
+    stage ('Docker') {
+
+        steps {
+
+        sh 'Docker build'
+
+        }
+
+            }
+
 
 }
 
