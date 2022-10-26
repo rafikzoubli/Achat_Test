@@ -15,7 +15,7 @@ pipeline {
         stage('Compiling'){
 
             steps{
-                 sh 'mvn -U clean install'
+                 sh 'mvn clean install'
                }
         }
 
@@ -47,7 +47,7 @@ pipeline {
 
     steps {
 
-    sh 'mvn deploy'
+    sh 'mvn deploy -DSkipTests'
 
     }
 
