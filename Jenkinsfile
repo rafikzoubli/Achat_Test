@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-    		DOCKERHUB_CREDENTIALS=credentials('dockerhubaccount')
+    		DOCKERHUB_CREDENTIALS=credentials('rafik-zoubli')
     	}
 
     stages{
@@ -65,14 +65,14 @@ pipeline {
     				sh 'docker build -t rafikzoubli/achat_docker:latest .'
     			}
     		}
+//dckr_pat_JaN7ObZj5zyKwVTiNfJ-fwAzv3s
 
     		stage('Login') {
 
     			steps {
-    				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    				'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
     			}
     		}
-
     		stage('Push') {
 
     			steps {
